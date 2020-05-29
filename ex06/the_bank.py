@@ -59,7 +59,7 @@ class Bank:
         else:
             raise TypeError("Account should be int(id) or str(name)")
 
-        if result and self.check_account(result) or self.fix_account(result):
+        if result and (self.check_account(result) or self.fix_account(result)):
             return result
         else:
             return None
@@ -94,7 +94,7 @@ class Bank:
         attrs = dir(account)
 
         if len(attrs) % 2 == 0:
-            if fixed in attrs:
+            if 'fixed' in attrs:
                 delattr(account, 'fixed')
             else:
                 account.fixed = True
